@@ -184,6 +184,144 @@ let http200Status = (statusCode:200,description:"OK")
 http200Status.statusCode
 
 
+var serverResponseCode: Int? = 404
+//serverResponseCode contains an actual Int value of 404
+print(serverResponseCode)
+
+serverResponseCode = nil
+
+print(serverResponseCode) // now it has nil or no value at all
+
+
+var defaultOfOptional: Int? //automatically gets set to nil since there is no value
+
+if serverResponseCode != nil {
+    print("This will only pass if an optional has a value")
+} else {
+    print("It did not pass due to the fact we set it to nil above ;)")
+}
+
+
+let convertedNumber = Int("255") // returns an optional
+
+if(convertedNumber != nil){
+    print(convertedNumber!) //we are now unwrapping the value and we only do it if it has a value else it will fail
+}
+
+
+//Optional binding
+
+
+//Syntax
+
+/*
+ 
+ if let constantName = someOptional {
+        //will only pass if someOptional is not nil
+        // if it does pass constantName is now equal to the value of someOptional unwrapped
+    }
+ 
+ */
+
+let exampleOptional: String? = "Hello World!"
+
+
+if let noLongerOptional = exampleOptional {
+    print("It was \(exampleOptional) and so now it is \(noLongerOptional)")
+} else {
+    print("it's got a value of nil :(")
+}
+
+//use commas to seperate many nested if statements and include more than one optional binding for example
+
+if let firstNumber = Int("1"), var secondNumber = Int("2"), firstNumber < secondNumber && secondNumber < 100 {
+    secondNumber = 12 // These variables are only temporary and can only be used inside this if block
+    print("YES You can do that ;)")
+}
+
+//print(secondNumber) // should throw an error if run
+
+//AND DON'T DO THIS
+
+if let firstNumber = Int("1") {
+    if var secondNumber = Int("2") {
+        if firstNumber < secondNumber && secondNumber < 100 {
+            secondNumber = 12
+            print("They are the same thing though")
+        }
+    }
+}
+
+
+
+//implicityly unwrapped optionals
+
+let implicitlyUnwrapped: String! = "NOT nil"
+//It will throw an error at runtime if implicitlyUnwrapped is nil
+let implicitlyString: String = implicitlyUnwrapped //You have to specify the type or else it will make it optional
+
+print(implicitlyString)
+
+
+func canThrowError(_ name:String) throws -> String  {
+    print("No Error was thrown YET muhahahahaha")
+    
+    return "\(name), \(name), \(name)";
+}
+
+do {
+   let myName = try canThrowError("Abdoelsamea")
+    print("the name is \(myName)")
+} catch {
+    print("ERROR WAS THROWNNNNNN")
+}
+
+
+
+let age = 1
+//if assesrtion fails it will stop your app from running.
+
+assert(age >= 0, "Assertion failed due to impossible age")
+
+
+if age > 10 {
+    print("You may ride the roller-coaster or the ferris wheel")
+} else if age > 0 {
+    print("You can ride the ferris wheel.")
+} else {
+    assertionFailure("A persons age can not be less than zero")
+};
+
+
+let index = 0
+//precondition(index > 0, "Index must be greater than zero")
+
+let (x1, y1) = (1,2)
+//preconditionFailure(_:file:line:)
+//fatalError()
+
+
+
+//remainder operator
+
+// a % b and a % -b always return the same thing because b is always ignored with its sign
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
